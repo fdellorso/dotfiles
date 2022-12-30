@@ -45,3 +45,13 @@ https://github.com/yshui/picom
 ### Wallpaper changer
 **Feh** \
 https://feh.finalrewind.org/
+
+### i3 add-ons
+**i3status** \
+https://github.com/i3/i3status
+
+**i3blocks** \
+https://github.com/vivien/i3blocks
+
+**i3lock** \
+https://github.com/i3/i3lock
