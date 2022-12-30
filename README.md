@@ -5,44 +5,43 @@
 ### Desktop Environment
 
 ### Display Manager
-**Ly (TUI)**
-
+**Ly (TUI)** 
 https://github.com/fairyglade/ly
 
 ### Windows Manager
-**I3 with Gaps (and rounded border)**
-https://i3wm.org/
+**I3 with Gaps (and rounded border)** 
+https://i3wm.org/ 
 https://github.com/Airblader/i3
 
-**Rounded Corners**
-https://github.com/FinnHering/i3 (Arch)
-https://github.com/jbenden/i3-gaps-rounded
+**Rounded Corners** 
+https://github.com/FinnHering/i3 (Arch) 
+https://github.com/jbenden/i3-gaps-rounded 
 https://github.com/resloved/i3
 
 ### Border Manager
-**XBorder**
+**XBorder** 
 https://github.com/deter0/xborder
 
 ### Terminal
-**Alacritty**
+**Alacritty** 
 https://github.com/alacritty/alacritty
 
 ### Launcher
-**Rofi**
+**Rofi** 
 https://github.com/davatorium/rofi
 
 ### Status Bar
-**Polybar**
+**Polybar** 
 https://github.com/polybar/polybar
 
 ### File Manager
-**Ranger**
+**Ranger** 
 https://github.com/ranger/ranger
 
 ### X Compositor
-**Picom (Shadows and Transparency)**
+**Picom (Shadows and Transparency)** 
 https://github.com/yshui/picom
 
 ### Wallpaper changer
-**Feh**
+**Feh** 
 https://feh.finalrewind.org/
