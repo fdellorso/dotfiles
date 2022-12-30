@@ -1,8 +1,8 @@
 # dotfiles
-
 ## Linux rice of DotFiles
 
 ### Desktop Environment
+i3wm is a DE replacement 
 
 ### Display Manager
 **Ly (TUI)** \
