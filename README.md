@@ -6,6 +6,7 @@
 
 ### Display Manager
 **Ly (TUI)**
+
 https://github.com/fairyglade/ly
 
 ### Windows Manager
