@@ -1,0 +1,21 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias firefoxhw='VDPAU_DRIVER=va_gl LIBVA_DRIVER_NAME=nvidia NVD_BACKEND=direct MOZ_DISABLE_RDD_SANDBOX=1 MOZ_X11_EGL=1 firefox'
+alias ollama='docker exec -it ollama ollama'
+PS1='[\u@\h \W]\$ '
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/fdellorso/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Created by `pipx` on 2026-05-20 06:07:39
+export PATH="$PATH:/home/fdellorso/.local/bin"
