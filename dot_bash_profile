@@ -1,0 +1,13 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/fdellorso/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Created by `pipx` on 2026-05-20 06:07:39
+export PATH="$PATH:/home/fdellorso/.local/bin"
