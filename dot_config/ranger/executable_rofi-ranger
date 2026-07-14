@@ -1,0 +1,3 @@
+#!/bin/bash
+chosen=$(ranger --choosedir=/tmp/choosedir; cat /tmp/choosedir)
+[ -n "$chosen" ] && cd "$chosen"
