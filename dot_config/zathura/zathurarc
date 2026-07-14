@@ -1,0 +1,50 @@
+# ─── Tema Dracula ───
+set default-bg                 "#282A36"
+set default-fg                 "#F8F8F2"
+set statusbar-bg               "#282A36"
+set statusbar-fg               "#50FA7B"
+set inputbar-bg                "#282A36"
+set inputbar-fg                "#F8F8F2"
+set notification-bg            "#282A36"
+set notification-fg            "#F8F8F2"
+set notification-error-bg      "#282A36"
+set notification-error-fg      "#FF5555"
+set notification-warning-bg    "#282A36"
+set notification-warning-fg    "#FFB86C"
+set completion-bg              "#282A36"
+set completion-fg              "#F8F8F2"
+set completion-highlight-bg    "#44475A"
+set completion-highlight-fg    "#50FA7B"
+set index-bg                   "#282A36"
+set index-fg                   "#F8F8F2"
+set index-active-bg            "#44475A"
+set index-active-fg            "#50FA7B"
+set highlight-color            "#44475A"
+set highlight-active-color     "#50FA7B"
+
+# ─── Font ───
+set font "JetBrainsMono Nerd Font 10"
+
+# ─── Recolor mode ───
+set recolor                true
+set recolor-darkcolor      "#F8F8F2"
+set recolor-lightcolor     "#282A36"
+set recolor-keephue        false
+set recolor-reverse-video  true
+
+# ─── Zoom / Finestra ───
+set adjust-open  "width"
+set zoom-default 100
+set window-width 1200
+set window-height 1600
+
+# ─── Clipboard ───
+set selection-clipboard clipboard
+
+# ─── Scrolling ───
+set scroll-step 50
+set scroll-wrap false
+set advance-pages-per-row false
+
+# ─── UI ───
+set guioptions ""
