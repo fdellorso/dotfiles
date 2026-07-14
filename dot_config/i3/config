@@ -216,6 +216,14 @@ exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 exec --no-startup-id greenclip daemon > /dev/null
 bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
+# notification daemon
+exec --no-startup-id dunst
+
+# notification controls
+bindsym $mod+Shift+n exec dunstctl close
+bindsym $mod+Ctrl+n exec dunstctl history-pop
+bindsym $mod+Shift+Ctrl+n exec dunstctl close-all
+
 # for_window [class=".*"] border pixel 0
 default_border pixel 0
 default_floating_border pixel 0

@@ -1,0 +1,67 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = 600
+    height = 50
+    origin = top-center
+    notification_limit = 20
+    offset = (0, 10)
+    progress_bar = true
+    indicate_hidden = yes
+    shrink = no
+    transparency = 0
+    separator_height = 2
+    padding = 16
+    horizontal_padding = 16
+    text_icon_padding = 8
+    frame_width = 2
+    frame_color = "#50FA7B"
+    separator_color = "frame"
+    sort = yes
+    idle_threshold = 120
+    font = "JetBrainsMono Nerd Font 11"
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    icon_corner_radius = 5
+    sticky_history = yes
+    history_length = 20
+    dmenu = /usr/bin/rofi -dmenu -p dunst
+    browser = /usr/bin/firefox
+    corner_radius = 10
+    ignore_dbusclose = no
+    force_xwayland = false
+    force_xinerama = false
+    mouse_left = close
+    mouse_middle = do_action
+    mouse_right = context
+
+[fullscreen]
+    fullscreen = push
+    set_transient = true
+
+[urgency_low]
+    background = "#282A36"
+    foreground = "#F8F8F2"
+    timeout = 5
+
+[urgency_normal]
+    background = "#282A36"
+    foreground = "#F8F8F2"
+    timeout = 7
+
+[urgency_critical]
+    background = "#282A36"
+    foreground = "#FF5555"
+    timeout = 0
