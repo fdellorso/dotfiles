@@ -212,18 +212,25 @@ class CalendarPopup:
                 frame = tk.Frame(self.calendar_frame, bg=COLORS["bg"])
                 frame.grid(row=row, column=col, padx=5, pady=2)
 
+                # Frame con altezza fissa
+                frame.configure(height=35)
+                frame.grid_propagate(False)
+
+                # Numero del giorno
                 lbl = tk.Label(
                     frame, text="", font=self.font_day,
                     bg=COLORS["bg"], fg=COLORS["fg"],
-                    width=4, height=1
+                    width=4
                 )
                 lbl.pack()
 
-                # Pallino evento (nascosto di default)
+                # Pallino evento (sotto il numero)
                 dot = tk.Label(
-                    frame, text="●", font=("JetBrainsMono Nerd Font", 8),
+                    frame, text="●", font=("JetBrainsMono Nerd Font", 6),
                     bg=COLORS["bg"], fg=COLORS["event_dot"]
                 )
+                dot.pack()
+                dot.pack_forget()  # Nascondi inizialmente
 
                 row_labels.append({"frame": frame, "label": lbl, "dot": dot})
             self.day_labels.append(row_labels)
@@ -402,9 +409,9 @@ class CalendarPopup:
             if time_str:
                 time_lbl = tk.Label(
                     event_frame, text=f"  {time_str}", font=self.font_event_time,
-                    bg=COLORS["bg"], fg=COLORS["event_time"], width=6, anchor="w"
+                    bg=COLORS["bg"], fg=COLORS["event_time"], width=7, anchor="w"
                 )
-                time_lbl.pack(side="left")
+                time_lbl.pack(side="left", padx=(0, 10))
 
             # Titolo
             title = event.get("title", "Senza titolo")
