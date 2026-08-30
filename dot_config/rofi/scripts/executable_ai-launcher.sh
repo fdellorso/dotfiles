@@ -46,15 +46,19 @@ fi
 
 # --- Build message (static, non-selectable) ---
 # Colors from shared/colors.rasi: background=#1E1F29, foreground=#FFFFFF, selected=#BD93F9, active=#50FA7B, urgent=#FF5555
+NF_CHART=$'\uf201'
+NF_PROMPT=$'\uf12c'
+NF_FOLDER=$'\uf07b'
+NF_LINK=$'\uf0c1'
 NL=$'\n'
-MSG="<span foreground='#BD93F9'>📊 OpenCode Go</span>${NL}"
+MSG="<span foreground='#BD93F9'>${NF_CHART} OpenCode Go</span>${NL}"
 MSG+="<span foreground='#FFFFFF'>Sessioni:</span> <span foreground='#BD93F9'>${SESSIONS}</span>  "
 MSG+="<span foreground='#FFFFFF'>Costo:</span> <span foreground='#50FA7B'>\$${COST}</span>${NL}"
 MSG+="<span foreground='#FFFFFF'>Modello:</span> <span foreground='#FF5555'>${LAST_MODEL_NAME}</span>${NL}"
 MSG+="<span foreground='#FFFFFF'>Token:</span> <span foreground='#BD93F9'>${TOKENS_IN_FMT} in / ${TOKENS_OUT_FMT} out</span>"
 
 # --- Build selectable entries ---
-ENTRIES="💬  Prompt → pi.dev"
+ENTRIES="${NF_PROMPT}  Prompt → pi.dev"
 
 if [ -n "$PROJECTS" ]; then
     while IFS= read -r proj; do
@@ -62,15 +66,15 @@ if [ -n "$PROJECTS" ]; then
         # Skip root project
         [ "$proj" = "/" ] && continue
         PROJ_NAME=$(basename "$proj")
-        ENTRIES+="${NL}📁  ${PROJ_NAME}  →  ${proj}"
+        ENTRIES+="${NL}${NF_FOLDER}  ${PROJ_NAME}  →  ${proj}"
     done <<< "$PROJECTS"
 fi
 
-ENTRIES+="${NL}🔗  OpenCode Go — sito ufficiale"
+ENTRIES+="${NL}${NF_LINK}  OpenCode Go — sito ufficiale"
 
 # --- Launch Rofi ---
 SELECTED=$(echo -e "$ENTRIES" | rofi -dmenu \
-    -p "🤖 AI" \
+    -p "${NF_CHART} AI" \
     -mesg "$MSG" \
     -theme "$ROFI_THEME" \
     -width 60 \
@@ -82,7 +86,7 @@ SELECTED=$(echo -e "$ENTRIES" | rofi -dmenu \
 # --- Handle selection ---
 case "$SELECTED" in
     *"Prompt → pi.dev"*)
-        PROMPT=$(rofi -dmenu -p "💬 Prompt" -theme "$ROFI_THEME" 2>/dev/null)
+        PROMPT=$(rofi -dmenu -p "${NF_PROMPT} Prompt" -theme "$ROFI_THEME" 2>/dev/null)
         cd "$HOME"
         if [ -n "$PROMPT" ]; then
             alacritty -e pi "$PROMPT"
@@ -91,13 +95,13 @@ case "$SELECTED" in
         fi
         ;;
 
-    *"📁"*)
+    *"${NF_FOLDER}"*)
         PROJ_PATH=$(echo "$SELECTED" | sed 's/.*→  //')
         if [ -d "$PROJ_PATH" ]; then
             cd "$PROJ_PATH" && alacritty -e opencode
         fi
         ;;
-    *"🔗"*)
+    *"${NF_LINK}"*)
         xdg-open "https://opencode.ai" 2>/dev/null &
         ;;
 esac
