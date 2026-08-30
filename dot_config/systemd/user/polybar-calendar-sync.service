@@ -1,0 +1,7 @@
+[Unit]
+Description=Sincronizzazione calendario Nextcloud per Polybar
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /home/fdellorso/.config/polybar/calendar/calendar_sync.py
+WorkingDirectory=/home/fdellorso/.config/polybar/calendar
