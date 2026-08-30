@@ -45,12 +45,13 @@ else
 fi
 
 # --- Build message (static, non-selectable) ---
+# Colors from shared/colors.rasi: background=#1E1F29, foreground=#FFFFFF, selected=#BD93F9, active=#50FA7B, urgent=#FF5555
 NL=$'\n'
-MSG="<span foreground='#8BE9FD'>📊 OpenCode Go</span>${NL}"
-MSG+="<span foreground='#F8F8F2'>Sessioni:</span> <span foreground='#BD93F9'>${SESSIONS}</span>  "
-MSG+="<span foreground='#F8F8F2'>Costo:</span> <span foreground='#50FA7B'>\$${COST}</span>${NL}"
-MSG+="<span foreground='#F8F8F2'>Modello:</span> <span foreground='#FF79C6'>${LAST_MODEL_NAME}</span>${NL}"
-MSG+="<span foreground='#F8F8F2'>Token:</span> <span foreground='#F1FA8C'>${TOKENS_IN_FMT} in / ${TOKENS_OUT_FMT} out</span>"
+MSG="<span foreground='#BD93F9'>📊 OpenCode Go</span>${NL}"
+MSG+="<span foreground='#FFFFFF'>Sessioni:</span> <span foreground='#BD93F9'>${SESSIONS}</span>  "
+MSG+="<span foreground='#FFFFFF'>Costo:</span> <span foreground='#50FA7B'>\$${COST}</span>${NL}"
+MSG+="<span foreground='#FFFFFF'>Modello:</span> <span foreground='#FF5555'>${LAST_MODEL_NAME}</span>${NL}"
+MSG+="<span foreground='#FFFFFF'>Token:</span> <span foreground='#BD93F9'>${TOKENS_IN_FMT} in / ${TOKENS_OUT_FMT} out</span>"
 
 # --- Build selectable entries ---
 ENTRIES="💬  Prompt → pi.dev"

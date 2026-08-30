@@ -1,125 +1,171 @@
-/* AI Agent Launcher — Dracula */
+/* AI Agent Launcher — Dracula (allineato al launcher normale) */
 
-* {
-    bg:         #282A2E;
-    bg-alt:     #343746;
-    bg-hover:   #44475A;
-    fg:         #F8F8F2;
-    fg-dim:     #6272A4;
-    purple:     #BD93F9;
-    cyan:       #8BE9FD;
-    green:      #50FA7B;
-    pink:       #FF79C6;
-    red:        #FF5555;
-    yellow:     #F1FA8C;
-    font:       "JetBrainsMono Nerd Font 12";
-}
+@import "~/.config/rofi/colors/dracula.rasi"
+@import "~/.config/rofi/launchers/type-2/shared/fonts.rasi"
 
 configuration {
     show-icons: false;
 }
 
 window {
-    location:      center;
-    anchor:        center;
-    width:         520px;
-    enabled:       true;
-    padding:       0px;
-    border:        0px solid;
+    transparency: "real";
+    location:     center;
+    anchor:       center;
+    fullscreen:   false;
+    width:        400px;
+    x-offset:     0px;
+    y-offset:     0px;
+    enabled:      true;
+    margin:       0px;
+    padding:      0px;
+    border:       0px solid;
     border-radius: 12px;
-    background-color: @bg;
+    border-color: @selected;
+    background-color: @background;
+    cursor:       "default";
 }
 
 mainbox {
     enabled:  true;
     spacing:  0px;
+    margin:   0px;
     padding:  0px;
+    border:   0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: transparent;
     children: [ "inputbar", "message", "listview" ];
 }
 
-/* ── Input bar ── */
+/* ── Inputbar ── */
 inputbar {
     enabled:  true;
     spacing:  10px;
-    padding:  12px 16px;
-    background-color: @bg;
-    text-color: @fg;
+    margin:   0px;
+    padding:  20px;
+    border:   0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: @selected;
+    text-color: @background;
     children: [ "prompt", "entry" ];
 }
 
 prompt {
     enabled:     true;
-    background-color: transparent;
-    text-color:  @purple;
+    background-color: inherit;
+    text-color:  inherit;
+}
+textbox-prompt-colon {
+    enabled:     true;
+    expand:      false;
+    str:         "::";
+    background-color: inherit;
+    text-color:  inherit;
 }
 
 entry {
     enabled:     true;
-    background-color: transparent;
-    text-color:  @fg;
+    background-color: inherit;
+    text-color:  inherit;
     cursor:      text;
-    placeholder: "Cerca o scrivi prompt...";
-    placeholder-color: @fg-dim;
+    placeholder: "Search...";
+    placeholder-color: inherit;
 }
 
 /* ── Message: stats (non-selectable) ── */
 message {
-    padding: 12px 16px;
-    background-color: @bg-alt;
+    padding: 0px;
+    background-color: transparent;
+    spacing: 0px;
 }
 
 textbox {
     background-color: transparent;
-    text-color: @fg;
+    text-color: @foreground;
     vertical-align: 0.5;
     horizontal-align: 0.0;
+    highlight: none;
+    padding: 12px 16px;
+    margin: 0px;
+    spacing: 0px;
 }
 
-/* ── List view: selectable items ── */
+/* ── List view ── */
 listview {
     enabled:   true;
     columns:   1;
-    lines:     8;
+    lines:     6;
     cycle:     true;
     dynamic:   true;
     scrollbar: false;
     layout:    vertical;
-    spacing:   0px;
-    padding:   4px 0px;
-    background-color: @bg;
-    text-color: @fg;
+    reverse:   false;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing:   5px;
+    margin:    0px;
+    padding:   0px;
+    border:    0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor:    "default";
 }
 
-element {
-    enabled:     true;
-    spacing:     8px;
-    padding:     10px 16px;
+scrollbar {
+    handle-width: 5px;
+    handle-color: @selected;
     border-radius: 0px;
+    background-color: @background-alt;
+}
+
+/* ── Elements ── */
+element {
+    enabled:  true;
+    spacing:  10px;
+    margin:   0px;
+    padding:  18px;
+    border:   0px solid;
+    border-radius: 8px;
+    border-color: @selected;
     background-color: transparent;
-    text-color:  @fg;
-    cursor:      pointer;
+    text-color: @foreground;
+    cursor:   pointer;
 }
 
 element normal.normal {
-    background-color: transparent;
-    text-color: @fg;
+    background-color: @background;
+    text-color: @foreground;
 }
 
 element selected.normal {
-    background-color: @bg-hover;
-    text-color: @fg;
+    background-color: @background-alt;
+    text-color: @foreground;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 32px;
+    cursor: inherit;
 }
 
 element-text {
     background-color: transparent;
     text-color: inherit;
+    highlight: inherit;
     cursor: inherit;
     vertical-align: 0.5;
     horizontal-align: 0.0;
 }
 
 error-message {
-    padding: 12px;
-    background-color: @bg;
-    text-color: @red;
+    padding: 15px;
+    border: 2px solid;
+    border-radius: 12px;
+    border-color: @selected;
+    background-color: @background;
+    text-color: @foreground;
 }
