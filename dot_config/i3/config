@@ -224,9 +224,8 @@ bindsym $mod+Shift+n exec dunstctl close
 bindsym $mod+Ctrl+n exec dunstctl history-pop
 bindsym $mod+Shift+Ctrl+n exec dunstctl close-all
 
-# AI agents
-bindsym $mod+grave exec alacritty -e opencode
-bindsym $mod+Shift+grave exec alacritty -e pi
+# AI agent launcher
+bindsym $mod+grave exec --no-startup-id ~/.config/rofi/scripts/ai-launcher.sh
 
 # for_window [class=".*"] border pixel 0
 default_border pixel 0

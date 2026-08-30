@@ -1,0 +1,125 @@
+/* AI Agent Launcher — Dracula */
+
+* {
+    bg:         #282A2E;
+    bg-alt:     #343746;
+    bg-hover:   #44475A;
+    fg:         #F8F8F2;
+    fg-dim:     #6272A4;
+    purple:     #BD93F9;
+    cyan:       #8BE9FD;
+    green:      #50FA7B;
+    pink:       #FF79C6;
+    red:        #FF5555;
+    yellow:     #F1FA8C;
+    font:       "JetBrainsMono Nerd Font 12";
+}
+
+configuration {
+    show-icons: false;
+}
+
+window {
+    location:      center;
+    anchor:        center;
+    width:         520px;
+    enabled:       true;
+    padding:       0px;
+    border:        0px solid;
+    border-radius: 12px;
+    background-color: @bg;
+}
+
+mainbox {
+    enabled:  true;
+    spacing:  0px;
+    padding:  0px;
+    children: [ "inputbar", "message", "listview" ];
+}
+
+/* ── Input bar ── */
+inputbar {
+    enabled:  true;
+    spacing:  10px;
+    padding:  12px 16px;
+    background-color: @bg;
+    text-color: @fg;
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:     true;
+    background-color: transparent;
+    text-color:  @purple;
+}
+
+entry {
+    enabled:     true;
+    background-color: transparent;
+    text-color:  @fg;
+    cursor:      text;
+    placeholder: "Cerca o scrivi prompt...";
+    placeholder-color: @fg-dim;
+}
+
+/* ── Message: stats (non-selectable) ── */
+message {
+    padding: 12px 16px;
+    background-color: @bg-alt;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @fg;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+/* ── List view: selectable items ── */
+listview {
+    enabled:   true;
+    columns:   1;
+    lines:     8;
+    cycle:     true;
+    dynamic:   true;
+    scrollbar: false;
+    layout:    vertical;
+    spacing:   0px;
+    padding:   4px 0px;
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element {
+    enabled:     true;
+    spacing:     8px;
+    padding:     10px 16px;
+    border-radius: 0px;
+    background-color: transparent;
+    text-color:  @fg;
+    cursor:      pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @bg-hover;
+    text-color: @fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+error-message {
+    padding: 12px;
+    background-color: @bg;
+    text-color: @red;
+}
