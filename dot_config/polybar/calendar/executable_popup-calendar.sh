@@ -8,7 +8,7 @@
 BAR_HEIGHT=38   # polybar height (30pt) + border-top (8px)
 GAP=10          # i3 gap size
 POPUP_WIDTH=420 # larghezza popup Tkinter
-POPUP_HEIGHT=480 # altezza popup Tkinter
+POPUP_HEIGHT=700 # altezza popup Tkinter
 DATE="$(date +"%a %d %H:%M")"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -30,8 +30,8 @@ case "$1" in
     # Fallback se xrandr non funziona
     WIDTH=${WIDTH:-1920}
     
-    pos_x=$((WIDTH - POPUP_WIDTH - GAP))
-    pos_y=$((BAR_HEIGHT + GAP + GAP))  # gap sotto polybar + gap finestra
+    pos_x=$((WIDTH - POPUP_WIDTH - GAP - GAP))  # gap destra + gap extra
+    pos_y=$((BAR_HEIGHT + GAP + GAP + GAP))  # gap sotto polybar + gap finestra + gap extra
 
     # Lancia il popup Python con le coordinate e dimensioni
     python3 "$POPUP_SCRIPT" --posx="$pos_x" --posy="$pos_y" --width="$POPUP_WIDTH" --height="$POPUP_HEIGHT" &

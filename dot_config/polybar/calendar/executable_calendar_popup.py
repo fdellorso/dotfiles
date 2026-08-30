@@ -75,7 +75,7 @@ def get_events_for_month(events, year, month):
 
 # ─── Popup Calendario ─────────────────────────────────────────────────────────
 class CalendarPopup:
-    def __init__(self, pos_x, pos_y, width=420, height=480):
+    def __init__(self, pos_x, pos_y, width=420, height=700):
         self.root = tk.Tk()
         self.root.title("calendar-popup")
         self.root.overrideredirect(True)  # no titlebar
@@ -268,9 +268,9 @@ class CalendarPopup:
         # Bind per ridimensionamento
         self.events_canvas.bind("<Configure>", self._on_canvas_configure)
 
-        # Scroll con rotella mouse
-        self.events_canvas.bind_all("<MouseWheel>", 
-            lambda e: self.events_canvas.yview_scroll(int(-1 * (e.delta / 120)), "units"))
+        # Scroll con rotella mouse (Linux: Button-4/5, Windows/Mac: MouseWheel)
+        self.events_canvas.bind_all("<Button-4>", lambda e: self.events_canvas.yview_scroll(-1, "units"))
+        self.events_canvas.bind_all("<Button-5>", lambda e: self.events_canvas.yview_scroll(1, "units"))
 
         # Label "nessun evento"
         self.no_events_label = tk.Label(
@@ -416,6 +416,9 @@ class CalendarPopup:
                 bg=COLORS["bg"], fg=COLORS["event_title"], anchor="w"
             )
             title_lbl.pack(side="left", fill="x", expand=True)
+
+        # Aggiorna scrollregion dopo aver aggiunto tutti gli eventi
+        self.events_canvas.configure(scrollregion=self.events_canvas.bbox("all"))
 
     def run(self):
         """Avvia il popup."""
