@@ -224,13 +224,12 @@ class CalendarPopup:
                 )
                 lbl.pack()
 
-                # Pallino evento (sotto il numero)
+                # Pallino evento (sempre presente, trasparente di default)
                 dot = tk.Label(
                     frame, text="●", font=("JetBrainsMono Nerd Font", 6),
-                    bg=COLORS["bg"], fg=COLORS["event_dot"]
+                    bg=COLORS["bg"], fg=COLORS["bg"]  # Trasparente
                 )
                 dot.pack()
-                dot.pack_forget()  # Nascondi inizialmente
 
                 row_labels.append({"frame": frame, "label": lbl, "dot": dot})
             self.day_labels.append(row_labels)
@@ -330,7 +329,7 @@ class CalendarPopup:
                 if day == 0:
                     # Giorno vuoto (mese precedente/successivo)
                     lbl.configure(text="", bg=COLORS["bg"], fg=COLORS["fg"])
-                    dot.pack_forget()
+                    dot.configure(fg=COLORS["bg"])  # Trasparente
                     continue
 
                 # Colori base
@@ -354,14 +353,11 @@ class CalendarPopup:
 
                 # Mostra/nascondi pallino evento
                 if has_events and not is_today:
-                    dot.configure(fg=COLORS["event_dot"])
-                    dot.pack()
+                    dot.configure(fg=COLORS["event_dot"])  # Verde = visibile
                 elif has_events and is_today:
-                    # Oggi con evento: pallino diverso
-                    dot.configure(fg=COLORS["today_fg"])
-                    dot.pack()
+                    dot.configure(fg=COLORS["today_fg"])  # Oggi con evento
                 else:
-                    dot.pack_forget()
+                    dot.configure(fg=COLORS["bg"])  # Trasparente
 
         # Aggiorna lista eventi
         self._update_event_list()
