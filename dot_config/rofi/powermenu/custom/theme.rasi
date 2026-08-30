@@ -1,0 +1,172 @@
+/* Custom Power Menu — Dracula (allineato a launcher/AI launcher) */
+
+@import "~/.config/rofi/colors/dracula.rasi"
+@import "~/.config/rofi/launchers/type-2/shared/fonts.rasi"
+
+configuration {
+    show-icons: false;
+}
+
+window {
+    transparency: "real";
+    location:     center;
+    anchor:       center;
+    fullscreen:   false;
+    width:        400px;
+    x-offset:     0px;
+    y-offset:     0px;
+    enabled:      true;
+    margin:       0px;
+    padding:      0px;
+    border:       0px solid;
+    border-radius: 12px;
+    border-color: @selected;
+    background-color: @background;
+    cursor:       "default";
+}
+
+mainbox {
+    enabled:  true;
+    spacing:  0px;
+    margin:   0px;
+    padding:  0px;
+    border:   0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: transparent;
+    children: [ "inputbar", "message", "listview" ];
+}
+
+/* ── Inputbar ── */
+inputbar {
+    enabled:  true;
+    spacing:  10px;
+    margin:   0px;
+    padding:  20px;
+    border:   0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: @selected;
+    text-color: @background;
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:     true;
+    background-color: inherit;
+    text-color:  inherit;
+}
+
+textbox-prompt-colon {
+    enabled:     true;
+    expand:      false;
+    str:         "::";
+    background-color: inherit;
+    text-color:  inherit;
+}
+
+entry {
+    enabled:     true;
+    background-color: inherit;
+    text-color:  inherit;
+    cursor:      text;
+    placeholder: " ";
+    placeholder-color: inherit;
+}
+
+/* ── Message: system info ── */
+message {
+    padding: 0px;
+    background-color: transparent;
+    spacing: 0px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @foreground;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+    highlight: none;
+    padding: 12px 16px;
+    margin: 0px;
+    spacing: 0px;
+}
+
+/* ── List view ── */
+listview {
+    enabled:   true;
+    columns:   1;
+    lines:     5;
+    cycle:     true;
+    dynamic:   true;
+    scrollbar: false;
+    layout:    vertical;
+    reverse:   false;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing:   5px;
+    margin:    0px;
+    padding:   8px 0px;
+    border:    0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor:    "default";
+}
+
+scrollbar {
+    handle-width: 5px;
+    handle-color: @selected;
+    border-radius: 0px;
+    background-color: @background-alt;
+}
+
+/* ── Elements ── */
+element {
+    enabled:  true;
+    spacing:  10px;
+    margin:   0px;
+    padding:  18px 16px;
+    border:   0px solid;
+    border-radius: 8px;
+    border-color: @selected;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor:   pointer;
+}
+
+element normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @background-alt;
+    text-color: @foreground;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 32px;
+    cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    highlight: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+error-message {
+    padding: 15px;
+    border: 2px solid;
+    border-radius: 12px;
+    border-color: @selected;
+    background-color: @background;
+    text-color: @foreground;
+}
