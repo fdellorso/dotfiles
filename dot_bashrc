@@ -9,13 +9,53 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias firefoxhw='VDPAU_DRIVER=va_gl LIBVA_DRIVER_NAME=nvidia NVD_BACKEND=direct MOZ_DISABLE_RDD_SANDBOX=1 MOZ_X11_EGL=1 firefox'
 alias ollama='docker exec -it ollama ollama'
-PS1='[\u@\h \W]\$ '
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+
+# ---- Prompt personalizzato ----
+__prompt_command() {
+    local exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        PS1="\[\e[31m\]✗ \[\e[0m\]"
+    else
+        PS1="\[\e[32m\]❯ \[\e[0m\]"
+    fi
+    local git_branch=$(git branch --show-current 2>/dev/null)
+    if [ -n "$git_branch" ]; then
+        PS1+="\[\e[33m\][$git_branch]\[\e[0m\] "
+    fi
+    PS1+="\[\e[1;36m\]\u@\h\[\e[0m\]:\[\e[1;35m\]\w\[\e[0m\]\n$ "
+}
+PROMPT_COMMAND=__prompt_command
+
+# ---- History tuning ----
+HISTSIZE=5000
+HISTFILESIZE=10000
+HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+
+# ---- Alias utili ----
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ll='ls -lah --color=auto'
+alias gs='git status'
+alias gd='git diff'
+alias gl='git log --oneline --graph -10'
+alias gp='git push'
+alias dc='docker compose'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias rebuild='sudo pacman -Syyu'
+alias conf='cd ~/Develop/Arch_X11_i3_Rice'
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/fdellorso/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
 # Created by `pipx` on 2026-05-20 06:07:39
 export PATH="$PATH:/home/fdellorso/.local/bin"
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+
+# Fuzzy directory jump
+alias zz='find ~ -type d -not -path "*/\.\*" | fzf'

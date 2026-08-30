@@ -43,7 +43,7 @@ mainbox {
     enabled:                     true;
     spacing:                     15px;
     margin:                      0px;
-    padding:                     30px;
+    padding:                     35px;
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
@@ -140,7 +140,7 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     12px;
+    padding:                     14px 18px;
     border:                      0px solid;
     border-radius:               100%;
     border-color:                @selected;

@@ -210,7 +210,7 @@ exec_always --no-startup-id "picom --config $HOME/.config/picom/picom.conf --dae
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+# exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 
 # clipboard tool
 exec --no-startup-id greenclip daemon > /dev/null
@@ -223,6 +223,10 @@ exec --no-startup-id dunst
 bindsym $mod+Shift+n exec dunstctl close
 bindsym $mod+Ctrl+n exec dunstctl history-pop
 bindsym $mod+Shift+Ctrl+n exec dunstctl close-all
+
+# AI agents
+bindsym $mod+grave exec alacritty -e opencode
+bindsym $mod+Shift+grave exec alacritty -e pi
 
 # for_window [class=".*"] border pixel 0
 default_border pixel 0
