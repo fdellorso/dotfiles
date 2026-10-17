@@ -99,8 +99,9 @@ def main():
     n_err = len(j["errors"])
 
     root = tk.Tk()
-    root.title("Nextcloud")
+    root.title("nc-popup")
     root.configure(bg=BG)
+    root.overrideredirect(True)  # no titlebar, galleggia come calendar-popup
     root.attributes("-topmost", True)
     W, H = 420, 320
     x = root.winfo_screenwidth() - W - 20
