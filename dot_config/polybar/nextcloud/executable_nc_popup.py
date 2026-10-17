@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Popup stato sync Nextcloud (sola lettura). Stile Dracula come calendar_popup."""
+import argparse
 import configparser
 import os
 import sqlite3
@@ -94,6 +95,13 @@ def running():
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--posx", type=int, default=100)
+    ap.add_argument("--posy", type=int, default=100)
+    ap.add_argument("--width", type=int, default=420)
+    ap.add_argument("--height", type=int, default=320)
+    args = ap.parse_args()
+
     info, j = cfg_data(), journal()
     ok = running()
     n_err = len(j["errors"])
@@ -103,9 +111,7 @@ def main():
     root.configure(bg=BG)
     root.overrideredirect(True)  # no titlebar, galleggia come calendar-popup
     root.attributes("-topmost", True)
-    W, H = 420, 320
-    x = root.winfo_screenwidth() - W - 20
-    root.geometry(f"{W}x{H}+{x}+45")
+    root.geometry(f"{args.width}x{args.height}+{args.posx}+{args.posy}")
 
     tk.Label(root, text=" Nextcloud", bg=BG, fg=FG,
              font=("JetBrainsMono Nerd Font", 12, "bold")).pack(pady=(10, 2))
@@ -141,8 +147,6 @@ def main():
     for path, err, retry in j["errors"]:
         row("Errore:", f"{os.path.basename(str(path))} (retry {retry})", RED)
 
-    tk.Button(root, text="Chiudi", bg="#44475A", fg=FG, font=FONT,
-              relief="flat", command=root.destroy).pack(pady=8)
     root.bind("<Escape>", lambda e: root.destroy())
     root.mainloop()
 
