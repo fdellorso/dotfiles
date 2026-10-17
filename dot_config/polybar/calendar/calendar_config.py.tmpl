@@ -1,0 +1,12 @@
+"""
+Configurazione Nextcloud per il sync del calendario.
+"""
+
+# Nextcloud
+NEXTCLOUD_URL = "{{ (rbwFields "nextcloud-calendar").caldav_url.value }}"
+NEXTCLOUD_USER = "{{ (rbw "nextcloud-calendar").data.username }}"
+NEXTCLOUD_PASS = "{{ (rbw "nextcloud-calendar").data.password }}"
+
+# Cache locale
+CACHE_DIR = "~/.cache/polybar-calendar"
+CACHE_FILE = "events.json"
