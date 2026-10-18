@@ -42,13 +42,13 @@ def main():
 
     def spent(since_ms):
         cur.execute(
-            "SELECT COALESCE(SUM(cost),0) FROM session "
+            "SELECT COALESCE(SUM(cost),0) FROM session_v2 "
             "WHERE cost > 0 AND time_created >= ?", (since_ms,))
         return cur.fetchone()[0] or 0.0
 
     cur.execute(
         "SELECT COALESCE(json_extract(model,'$.id'),'?'), COALESCE(SUM(cost),0) "
-        "FROM session WHERE cost > 0 AND time_created >= ? "
+        "FROM session_v2 WHERE cost > 0 AND time_created >= ? "
         "GROUP BY 1 ORDER BY 2 DESC LIMIT 6", (month_ms,))
     top = [{"model": (r[0] or "?"), "cost": round(r[1], 4)} for r in cur.fetchall()]
 
