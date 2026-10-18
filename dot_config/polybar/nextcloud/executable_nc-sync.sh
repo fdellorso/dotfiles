@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # nc-sync.sh — stato sync Nextcloud per polybar (sola lettura).
 # Grigio: client spento | Verde: ok | Rosso + N: errori | Arancio: stato ignoto.
-C_OK="%{F#8BE9FD}%{F-}"
+C_OK="%{F#00BFFF}%{F-}"
 C_ERR="%{F#FF5555}"
 C_OFF="%{F#6272A4}%{F-}"
 C_UNK="%{F#FFB86C} ?%{F-}"

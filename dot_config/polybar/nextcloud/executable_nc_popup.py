@@ -9,7 +9,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 BG, FG = "#282A36", "#F8F8F2"
-ACCENT, RED, GRAY, ORANGE = "#8BE9FD", "#FF5555", "#6272A4", "#FFB86C"
+ACCENT, RED, GRAY, ORANGE = "#00BFFF", "#FF5555", "#6272A4", "#FFB86C"
 FONT = ("JetBrainsMono Nerd Font", 10)
 
 HOME = os.path.expanduser("~")
