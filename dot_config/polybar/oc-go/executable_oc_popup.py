@@ -54,19 +54,19 @@ def main():
                  font=FONT).grid(row=0, column=0, sticky="w")
     else:
         w = d["windows"]
-        tk.Label(body, text=f"piano: {d['plan']} · focus: {d['focus']}",
+        tk.Label(body, text=f"piano: {d['plan']} · complessivo, solo CLI/TUI locale",
                  bg=BG, fg=FG, font=FONT, anchor="w").grid(
             row=r, column=0, columnspan=2, sticky="w")
         r += 1
-        bar(body, "5 ore (/20%):", w["h5"]["pct"], r)
+        bar(body, "5 ore (tetto $12):", w["h5"]["pct"], r)
         tk.Label(body, text=f"${w['h5']['spent']} / ${w['h5']['cap']}",
                  bg=BG, fg=GRAY, font=FONT).grid(row=r, column=2, sticky="w")
         r += 1
-        bar(body, "7 giorni (/50%):", w["week"]["pct"], r)
+        bar(body, "7 giorni (tetto $30):", w["week"]["pct"], r)
         tk.Label(body, text=f"${w['week']['spent']} / ${w['week']['cap']}",
                  bg=BG, fg=GRAY, font=FONT).grid(row=r, column=2, sticky="w")
         r += 1
-        bar(body, "mese (/100%):", w["month"]["pct"], r)
+        bar(body, "mese (tetto $60):", w["month"]["pct"], r)
         tk.Label(body, text=f"${w['month']['spent']} / ${w['month']['cap']}",
                  bg=BG, fg=GRAY, font=FONT).grid(row=r, column=2, sticky="w")
         r += 1
@@ -82,6 +82,10 @@ def main():
                      font=FONT).grid(row=r, column=2, sticky="w")
             r += 1
         upd = datetime.fromtimestamp(d["updated"]).strftime("%d/%m %H:%M")
+        tk.Label(body, text="pi e altri client: solo su dashboard", bg=BG, fg=GRAY,
+                 font=FONT).grid(row=r, column=0, columnspan=3,
+                                  sticky="w", pady=(6, 0))
+        r += 1
         tk.Label(body, text=f"aggiornato: {upd}", bg=BG, fg=GRAY,
                  font=FONT).grid(row=r, column=0, columnspan=3,
                                   sticky="w", pady=(6, 0))
