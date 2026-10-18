@@ -14,6 +14,8 @@ case "$1" in
         pkill -f oc_popup.py
         exit 0
     fi
+    # Refresh on-demand: aggiorna la cache prima di aprire
+    python3 "${SCRIPT_DIR}/oc_go_sync.py" > /dev/null 2>&1
     SCREEN_INFO=$(xrandr --query 2>/dev/null | grep ' connected' | head -1)
     WIDTH=$(echo "$SCREEN_INFO" | grep -oP '\d+x\d+' | head -1 | cut -dx -f1)
     WIDTH=${WIDTH:-1920}
