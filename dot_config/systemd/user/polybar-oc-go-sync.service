@@ -1,7 +1,0 @@
-[Unit]
-Description=Sincronizzazione spesa OpenCode Go per Polybar
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/python3 /home/fdellorso/.config/polybar/oc-go/oc_go_sync.py
-WorkingDirectory=/home/fdellorso/.config/polybar/oc-go
