@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=Prism Launcher
+Comment=Discover, manage, and play Minecraft instances
+Type=Application
+Terminal=false
+Exec=prismlauncher %U
+StartupNotify=true
+Icon=org.prismlauncher.PrismLauncher
+Categories=Game;ActionGame;AdventureGame;Simulation;PackageManager;
+Keywords=game;minecraft;mc;
+StartupWMClass=PrismLauncher
+# 2026-10-18: rimosso application/zip (lo apriva al posto del file manager).
+# PrismLauncher serve solo per modpack/scheme; gli zip li gestisce muCommander.
+MimeType=application/x-modrinth-modpack+zip;x-scheme-handler/curseforge;x-scheme-handler/prismlauncher;x-scheme-handler/prismlauncher;

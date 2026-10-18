@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=imv (sfoglia cartella)
+Comment=Sfoglia con le frecce tutte le immagini della cartella
+Exec=/home/fdellorso/.local/bin/imv-here.sh %F
+Icon=imv
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png;image/tiff;image/webp;image/x-bmp;image/x-png;image/svg+xml;image/heic;image/avif;image/jxl;
+NoDisplay=true
+Categories=Graphics;Viewer;
+StartupNotify=false
