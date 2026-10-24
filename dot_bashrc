@@ -59,3 +59,6 @@ eval "$(fzf --bash)"
 
 # Fuzzy directory jump
 alias zz='find ~ -type d -not -path "*/\.\*" | fzf'
+
+# pi shell completion (pi-shell-completion extension)
+eval "$(pi --completion bash)"
