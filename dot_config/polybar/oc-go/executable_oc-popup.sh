@@ -14,10 +14,9 @@ case "$1" in
         pkill -f "[o]c_popup.py"
         exit 0
     fi
-    # Refresh on-demand: aggiorna la cache prima di aprire,
-    # poi forza la barra a rileggerla subito (niente attesa del tick 60s)
+    # Refresh on-demand: aggiorna la cache prima di aprire.
+    # La barra la rilegge da sola ogni 10s (interval modulo).
     python3 "${SCRIPT_DIR}/oc_go_sync.py" > /dev/null 2>&1
-    polybar-msg action "#oc-go.hook.0" > /dev/null 2>&1 || true
     SCREEN_INFO=$(xrandr --query 2>/dev/null | grep ' connected' | head -1)
     WIDTH=$(echo "$SCREEN_INFO" | grep -oP '\d+x\d+' | head -1 | cut -dx -f1)
     WIDTH=${WIDTH:-1920}
