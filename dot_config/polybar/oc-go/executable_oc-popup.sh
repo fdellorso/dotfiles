@@ -10,12 +10,14 @@ POPUP_SCRIPT="${SCRIPT_DIR}/oc_popup.py"
 
 case "$1" in
 --popup)
-    if pgrep -f oc_popup.py > /dev/null; then
-        pkill -f oc_popup.py
+    if pgrep -f "[o]c_popup.py" > /dev/null; then
+        pkill -f "[o]c_popup.py"
         exit 0
     fi
-    # Refresh on-demand: aggiorna la cache prima di aprire
+    # Refresh on-demand: aggiorna la cache prima di aprire,
+    # poi forza la barra a rileggerla subito (niente attesa del tick 60s)
     python3 "${SCRIPT_DIR}/oc_go_sync.py" > /dev/null 2>&1
+    polybar-msg action "#oc-go.hook.0" > /dev/null 2>&1 || true
     SCREEN_INFO=$(xrandr --query 2>/dev/null | grep ' connected' | head -1)
     WIDTH=$(echo "$SCREEN_INFO" | grep -oP '\d+x\d+' | head -1 | cut -dx -f1)
     WIDTH=${WIDTH:-1920}
