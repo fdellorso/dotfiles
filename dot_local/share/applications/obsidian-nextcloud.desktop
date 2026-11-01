@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Obsidian – Nextcloud
+Comment=Apri il vault Nextcloud
+Exec=obsidian "obsidian://open?vault=Nextcloud"
+Icon=obsidian
+Categories=Office;TextEditor;
+StartupWMClass=obsidian

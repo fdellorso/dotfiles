@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Obsidian – Note
+Comment=Apri il vault Note
+Exec=obsidian "obsidian://open?vault=Note"
+Icon=obsidian
+Categories=Office;TextEditor;
+StartupWMClass=obsidian
