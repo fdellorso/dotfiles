@@ -1,6 +1,10 @@
 {
-  "extras": [],
-  "news": {},
-  "version": 8,
-  "colorscheme": "dracula"
+  "colorscheme": "dracula",
+  "extras": [
+
+  ],
+  "news": {
+    "NEWS.md": "11866"
+  },
+  "version": 8
 }
