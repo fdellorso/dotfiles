@@ -61,7 +61,11 @@ eval "$(fzf --bash)"
 alias zz='find ~ -type d -not -path "*/\.\*" | fzf'
 
 # pi shell completion (pi-shell-completion extension)
-eval "$(pi --completion bash)"
+# workaround bug upstream: il generatore emette una funzione invalida
+# "_pi_cmd_mcp_add, remove, login," -> si rimuove l'intero blocco + ramo case
+# (se upstream sistema, il filtro diventa no-op). Vedi issue da aprire:
+# https://github.com/AshesToAgents/pi-shell-completion/issues
+eval "$(pi --completion bash 2>/dev/null | sed -e '/_pi_cmd_mcp_add, remove, login,() {/,/^}$/d' -e '/add, remove, login,)/d')"
 
 # opencode
 export PATH=/home/fdellorso/.opencode/bin:$PATH
