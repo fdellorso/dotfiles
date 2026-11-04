@@ -61,6 +61,10 @@ eval "$(fzf --bash)"
 alias zz='find ~ -type d -not -path "*/\.\*" | fzf'
 
 # pi shell completion (pi-shell-completion extension)
+# Node non legge il CA store di sistema: la Homelab Internal CA (penpot,
+# nextcloud, ...) va passata esplicitamente o i server MCP remoti falliscono.
+# (NODE_TLS_REJECT_UNAUTHORIZED=0 sarebbe l'alternativa insicura: mai.)
+export NODE_EXTRA_CA_CERTS=/etc/ca-certificates/extracted/tls-ca-bundle.pem
 # workaround bug upstream: il generatore emette una funzione invalida
 # "_pi_cmd_mcp_add, remove, login," -> si rimuove l'intero blocco + ramo case
 # (se upstream sistema, il filtro diventa no-op). Vedi issue da aprire:
