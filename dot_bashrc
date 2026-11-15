@@ -65,11 +65,11 @@ alias zz='find ~ -type d -not -path "*/\.\*" | fzf'
 # nextcloud, ...) va passata esplicitamente o i server MCP remoti falliscono.
 # (NODE_TLS_REJECT_UNAUTHORIZED=0 sarebbe l'alternativa insicura: mai.)
 export NODE_EXTRA_CA_CERTS=/etc/ca-certificates/extracted/tls-ca-bundle.pem
-# workaround bug upstream: il generatore emette una funzione invalida
-# "_pi_cmd_mcp_add, remove, login," -> si rimuove l'intero blocco + ramo case
-# (se upstream sistema, il filtro diventa no-op). Vedi issue da aprire:
-# https://github.com/AshesToAgents/pi-shell-completion/issues
-eval "$(pi --completion bash 2>/dev/null | sed -e '/_pi_cmd_mcp_add, remove, login,() {/,/^}$/d' -e '/add, remove, login,)/d')"
+# pi-shell-completion: filtro+validazione (allineato 2026-11-14 controller/archlinux/laravel).
+# Upstream (pi>=1.5.2) emette funzioni/voci combo con nomi invalidi (virgole, parentesi) e
+# su alcuni launcher l'output su pipe si tronca: si genera su file, si scartano i costrutti
+# invalidi, si valida con bash -n e si fa eval solo se valido. Mai errori al login.
+_PI_TMP=$(mktemp) && pi --completion bash >"$_PI_TMP" 2>/dev/null && awk '/^_pi_cmd_/ && $0 !~ /^_pi_cmd_[A-Za-z0-9_]+\(\) \{$/ {skip=1; next} skip && /^}$/ {skip=0; next} skip {next} {line=$0; f=match(line, /\)/); if (f) line=substr(line, 1, RSTART-1); sub(/^    /, X, line)} /^    .*;;$/ && f && line ~ /[ ,()]/ {next} {print}' "$_PI_TMP" >"$_PI_TMP.f" && bash -n "$_PI_TMP.f" 2>/dev/null && eval "$(cat "$_PI_TMP.f")"; rm -f "$_PI_TMP" "$_PI_TMP.f" 2>/dev/null; unset _PI_TMP
 
 # opencode
 export PATH=/home/fdellorso/.opencode/bin:$PATH
