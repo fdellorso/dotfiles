@@ -65,16 +65,25 @@ def download_event(event_url):
 
 
 def parse_ics(ics_content):
-    """Parsifica il contenuto ICS ed estrai le informazioni dell'evento."""
+    """Parsifica il contenuto ICS ed estrai le informazioni dell'evento (solo VEVENT, ignora VTIMEZONE)."""
     event = {}
+
+    blocks = re.findall(r"BEGIN:VEVENT(.*?)END:VEVENT", ics_content, re.S)
+    if not blocks:
+        return event
+    candidates = [b for b in blocks if "STATUS:CANCELLED" not in b]
+    if not candidates:
+        return event
+    masters = [b for b in candidates if "RECURRENCE-ID" not in b]
+    blk = masters[0] if masters else candidates[0]
     
     # Estrai SUMMARY
-    summary_match = re.search(r"SUMMARY:(.+)", ics_content)
+    summary_match = re.search(r"SUMMARY:(.+)", blk)
     if summary_match:
         event["title"] = summary_match.group(1).strip()
     
     # Estrai DTSTART
-    dtstart_match = re.search(r"DTSTART[^:]*:(\d{8}T?\d{0,6})", ics_content)
+    dtstart_match = re.search(r"DTSTART[^:]*:(\d{8}T?\d{0,6})", blk)
     if dtstart_match:
         dtstart = dtstart_match.group(1)
         try:
@@ -90,7 +99,7 @@ def parse_ics(ics_content):
             pass
     
     # Estrai DTEND
-    dtend_match = re.search(r"DTEND[^:]*:(\d{8}T?\d{0,6})", ics_content)
+    dtend_match = re.search(r"DTEND[^:]*:(\d{8}T?\d{0,6})", blk)
     if dtend_match:
         dtend = dtend_match.group(1)
         try:
@@ -101,7 +110,7 @@ def parse_ics(ics_content):
             pass
     
     # Estrai LOCATION
-    location_match = re.search(r"LOCATION:(.+)", ics_content)
+    location_match = re.search(r"LOCATION:(.+)", blk)
     if location_match:
         event["location"] = location_match.group(1).strip()
     
